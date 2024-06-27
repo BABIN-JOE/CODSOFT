@@ -26,6 +26,44 @@ def chatbot_response(user_input):
         return "I don't have an age like humans do, but I was created recently."
     elif "creator" in user_input or "created" in user_input:
         return "I was created by a Software Developer Called Babin Joe."
+    
+    # Assistance
+    elif "help" in user_input:
+        return "Sure! What do you need help with?"
+    elif "support" in user_input:
+        return "I'm here to support you. What do you need assistance with?"
+    elif "assist" in user_input:
+        return "Of course! How can I assist you today?"
+
+    # Weather
+    elif "weather" in user_input:
+        return "I'm not equipped to provide real-time weather updates, However you can visit https://weather.com."
+    elif "temperature" in user_input:
+        return "I don't have the capability to provide real-time temperature updates. However you can visit https://weather.com"
+
+    # Time and Date
+    elif "time" in user_input:
+        return "I'm not equipped with a clock, but you can check your device for the current time."
+    elif "date" in user_input:
+        return "Please check your device for the current date."
+
+    # Directions
+    elif "directions" in user_input:
+        return "I can't provide real-time directions, However you can visit https://www.google.com/maps"
+    elif "navigate" in user_input:
+        return "I can't provide navigations, However you can visit https://www.google.com/maps"
+
+    # Food and Drink
+    elif "favorite food" in user_input:
+        return "I don't eat, but I hear pizza is a popular choice!"
+    elif "favorite drink" in user_input:
+        return "I don't drink, but many people enjoy coffee."
+
+    # Technology
+    elif "favorite technology" in user_input:
+        return "I find artificial intelligence fascinating!"
+    elif "tech news" in user_input:
+        return "You can visit https://indianexpress.com/section/technology/ for latest tech news."
 
     # Ending the Conversation
     elif "bye" in user_input or "goodbye" in user_input:
