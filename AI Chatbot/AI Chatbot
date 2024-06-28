@@ -26,7 +26,7 @@ def chatbot_response(user_input):
         return "I don't have an age like humans do, but I was created recently."
     elif "creator" in user_input or "created" in user_input:
         return "I was created by a Software Developer Called Babin Joe."
-    
+
     # Assistance
     elif "help" in user_input:
         return "Sure! What do you need help with?"
@@ -64,6 +64,48 @@ def chatbot_response(user_input):
         return "I find artificial intelligence fascinating!"
     elif "tech news" in user_input:
         return "You can visit https://indianexpress.com/section/technology/ for latest tech news."
+
+    # Hobbies and Interests
+    elif "hobbies" in user_input:
+        return "I don't have hobbies, but I can tell you about various hobbies people enjoy."
+    elif "interests" in user_input:
+        return "I'm interested in helping you! What are your interests?"
+
+    # Jokes and Fun
+    elif "tell me a joke" in user_input:
+        return "Why don't scientists trust atoms? Because they make up everything!"
+    elif "make me laugh" in user_input:
+        return "What do you call fake spaghetti? An impasta!"
+
+    # Health and Wellness
+    elif "stay healthy" in user_input:
+        return "Eating well, exercising, and getting enough sleep are key to staying healthy."
+    elif "mental health" in user_input:
+        return "It's important to take care of your mental health. Consider speaking to a professional if you need help."
+
+    # Education
+    elif "study tips" in user_input:
+        return "Regular study sessions, staying organized, and taking breaks can help improve your study habits."
+    elif "best way to learn" in user_input:
+        return "Everyone learns differently, but active engagement and practice are often very effective."
+
+    # Travel
+    elif "travel tips" in user_input:
+        return "Pack light, stay safe, and always have a backup plan."
+    elif "best places to visit" in user_input:
+        return "There are many wonderful places to visit! It depends on your interests."
+
+    # Music and Movies
+    elif "favorite music" in user_input:
+        return "I don't listen to music, but many people love pop and classical genres."
+    elif "favorite movie" in user_input:
+        return "I don't watch movies, but 'The Shawshank Redemption' is often highly recommended."
+
+    # Miscellaneous
+    elif "fun fact" in user_input:
+        return "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible."
+    elif "random fact" in user_input:
+        return "Octopuses have three hearts and blue blood!"
 
     # Ending the Conversation
     elif "bye" in user_input or "goodbye" in user_input:
