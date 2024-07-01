@@ -60,7 +60,7 @@ def minimax(board, depth, is_max):
                     best = min(best, minimax(board, depth + 1, not is_max))
                     board[i][j] = ' '
         return best
-
+    
 # Game Logic
 
 def find_best_move(board):
@@ -93,15 +93,24 @@ def main():
     while is_moves_left(board):
         if turn == human_player:
             print_board(board)
-            row = int(input("Enter the row (0, 1, 2): "))
-            col = int(input("Enter the column (0, 1, 2): "))
-            if board[row][col] == ' ':
-                board[row][col] = human_player
-                if is_winner(board, human_player):
-                    print_board(board)
-                    print("Human wins!")
-                    return
-                turn = ai_player
+            valid_move = False
+            while not valid_move:
+                row = int(input("Enter the row (0, 1, 2): "))
+                col = int(input("Enter the column (0, 1, 2): "))
+                if 0 <= row <= 2 and 0 <= col <= 2:
+                    if board[row][col] == ' ':
+                        board[row][col] = human_player
+                        valid_move = True
+                    else:
+                        print("This move is not valid, cell already occupied. Try again.")
+                else:
+                    print("Invalid input, please enter a row and column between 0 and 2.")
+                
+            if is_winner(board, human_player):
+                print_board(board)
+                print("Human wins!")
+                return
+            turn = ai_player
         else:
             best_move = find_best_move(board)
             board[best_move[0]][best_move[1]] = ai_player
