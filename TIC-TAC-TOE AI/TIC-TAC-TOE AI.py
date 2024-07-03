@@ -63,17 +63,17 @@ def minimax(board, depth, is_max):
     
 # Game Logic
 
-def find_best_move(board):
-    best_val = -1000
+def find_best_move(board, ai_player):
+    best_val = -1000 if ai_player == 'O' else 1000
     best_move = (-1, -1)
 
     for i in range(3):
         for j in range(3):
             if board[i][j] == ' ':
-                board[i][j] = 'O'
-                move_val = minimax(board, 0, False)
+                board[i][j] = ai_player
+                move_val = minimax(board, 0, ai_player == 'X')
                 board[i][j] = ' '
-                if move_val > best_val:
+                if (ai_player == 'O' and move_val > best_val) or (ai_player == 'X' and move_val < best_val):
                     best_move = (i, j)
                     best_val = move_val
 
@@ -86,13 +86,13 @@ def is_winner(board, player):
 
 def main():
     board = [[' ' for _ in range(3)] for _ in range(3)]
-    human_player = 'X'
-    ai_player = 'O'
+    human_player = input("Do you want to be X or O? ").upper()
+    ai_player = 'O' if human_player == 'X' else 'X'
     turn = 'X'  # X always goes first
 
     while is_moves_left(board):
+        print_board(board)
         if turn == human_player:
-            print_board(board)
             valid_move = False
             while not valid_move:
                 row = int(input("Enter the row (0, 1, 2): "))
@@ -112,7 +112,7 @@ def main():
                 return
             turn = ai_player
         else:
-            best_move = find_best_move(board)
+            best_move = find_best_move(board, ai_player)
             board[best_move[0]][best_move[1]] = ai_player
             if is_winner(board, ai_player):
                 print_board(board)
