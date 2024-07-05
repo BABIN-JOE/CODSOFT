@@ -82,11 +82,25 @@ def find_best_move(board, ai_player):
 def is_winner(board, player):
     return evaluate(board) == (10 if player == 'O' else -10)
 
+def get_valid_input(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+            if value < 0 or value > 2:
+                raise ValueError
+            return value
+        except ValueError:
+            print("Invalid input. Please enter an integer between 0 and 2.")
+
 # User Interface
 
 def main():
     board = [[' ' for _ in range(3)] for _ in range(3)]
-    human_player = input("Do you want to be X or O? ").upper()
+    human_player = ''
+    while human_player not in ['X', 'O']:
+        human_player = input("Do you want to be X or O? ").upper()
+        if human_player not in ['X', 'O']:
+            print("Invalid input. Please enter X or O.")
     ai_player = 'O' if human_player == 'X' else 'X'
     turn = 'X'  # X always goes first
 
@@ -95,16 +109,13 @@ def main():
         if turn == human_player:
             valid_move = False
             while not valid_move:
-                row = int(input("Enter the row (0, 1, 2): "))
-                col = int(input("Enter the column (0, 1, 2): "))
-                if 0 <= row <= 2 and 0 <= col <= 2:
-                    if board[row][col] == ' ':
-                        board[row][col] = human_player
-                        valid_move = True
-                    else:
-                        print("This move is not valid, cell already occupied. Try again.")
+                row = get_valid_input("Enter the row (0, 1, 2): ")
+                col = get_valid_input("Enter the column (0, 1, 2): ")
+                if board[row][col] == ' ':
+                    board[row][col] = human_player
+                    valid_move = True
                 else:
-                    print("Invalid input, please enter a row and column between 0 and 2.")
+                    print("This move is not valid, cell already occupied. Try again.")
                 
             if is_winner(board, human_player):
                 print_board(board)
